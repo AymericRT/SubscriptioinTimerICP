@@ -1,10 +1,27 @@
 mod service;
+use crate::service::transfer_usdc_subscription::subscripton_fee_usdc;
 
 use alloy::{
     signers::icp::IcpSigner,
     transports::icp::{RpcApi, RpcService},
 };
 use ic_cdk::export_candid;
+use std::time::Duration;
+use ic_cdk_timers::set_timer_interval;
+
+const N: Duration = Duration::from_secs(10);
+
+#[ic_cdk::update]
+fn start_timer() {
+    ic_cdk_timers::set_timer_interval(N, || ic_cdk::spawn(async_function()));
+}
+
+async fn async_function() {
+    let _ = subscripton_fee_usdc().await.unwrap();
+}
+
+
+
 
 // The toolkit app uses an external EVM RPC Proxy instead of the EVM RPC Canister
 // available on IC. When you make a call to the EVM RPC canister, that call gets
@@ -50,5 +67,8 @@ async fn create_icp_signer() -> IcpSigner {
     let ecdsa_key_name = get_ecdsa_key_name();
     IcpSigner::new(vec![], &ecdsa_key_name, None).await.unwrap()
 }
+
+
+
 
 export_candid!();
