@@ -123,6 +123,13 @@ dfx deploy
 	<tbody>
 		<tr>
             <td align="center">
+                <a href="https://github.com/AymericRT">
+                    <img src="https://avatars.githubusercontent.com/u/129095209?v=4" width="100;" alt="AymericRT"/>
+                    <br />
+                    <sub><b>AymericRT</b></sub>
+                </a>
+            </td>
+            <td align="center">
                 <a href="https://github.com/kristoferlund">
                     <img src="https://avatars.githubusercontent.com/u/9698363?v=4" width="100;" alt="kristoferlund"/>
                     <br />
